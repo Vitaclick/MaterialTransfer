@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command MaterialTransfer</Text>
+    <Description>Some description for MaterialTransfer</Description>
+    <Assembly>MaterialTransfer.dll</Assembly>
+    <FullClassName>MaterialTransfer.Command</FullClassName>
+    <ClientId>7312a5be-b4b2-4d80-be00-edb617e0d78e</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application MaterialTransfer</Name>
+    <Assembly>MaterialTransfer.dll</Assembly>
+    <FullClassName>MaterialTransfer.App</FullClassName>
+    <ClientId>6c4b8a9e-01b1-4db4-a756-634ec854ecd9</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
