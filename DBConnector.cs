@@ -36,12 +36,12 @@ namespace MaterialTransfer
       });
     }
 
-    public IList<IList<object>> ReadSheetData(string range)
+    public List<IEnumerable<object>> ReadSheetData(string range)
     {
       var request = service.Spreadsheets.Values.Get(spreadsheetId, range);
       ValueRange response = request.Execute();
 
-      return response.Values;
+      return response.Values.Select(x => x.DefaultIfEmpty("")).ToList();
     }
   }
 }
