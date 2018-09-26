@@ -54,9 +54,19 @@ namespace MaterialTransfer
             }
 
             // adding color
-            material.Color = new Color(243, 23, 54);
-            material.Transparency = 0;
-            material.UseRenderAppearanceForShading = true;
+            var stringRGB = sheetMaterial[4] as string;
+            try
+            {
+              string[] splittedStringRGB = stringRGB.Split(',');
+              var RGB = splittedStringRGB.Select(i => byte.Parse(i)).ToArray();
+              material.Color = new Color(RGB[0], RGB[1], RGB[2]);
+              material.Transparency = 0;
+              //material.UseRenderAppearanceForShading = true;
+            }
+            catch
+            {
+              continue;
+            }
           }
           else
           {
@@ -89,7 +99,7 @@ namespace MaterialTransfer
       {
         // TODO: add null check if material is correct
         var sheetMaterial = materialsFromDB.ElementAt(i);
-        if (sheetMaterial.Count() > 4 || !sheetMaterial.Any(x => (string) x == string.Empty))
+        if (sheetMaterial.Count() > 4 || !sheetMaterial.Any(x => (string) x == string.Empty) || !sheetMaterial.ElementAt(1).ToString().Contains("NCS"))
         {
           string sheetMaterialName = sheetMaterial.ElementAt(1) as string;
           if (!sheetMaterials.ContainsKey(sheetMaterialName))
