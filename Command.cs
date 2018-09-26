@@ -52,6 +52,11 @@ namespace MaterialTransfer
             {
               matComments.Set(sheetMaterialComments);
             }
+
+            // adding color
+            material.Color = new Color(243, 23, 54);
+            material.Transparency = 0;
+            material.UseRenderAppearanceForShading = true;
           }
           else
           {
@@ -59,6 +64,7 @@ namespace MaterialTransfer
           }
         }
       }
+      TaskDialog.Show("Трансфер материалов", $"Обновлено {sheetMaterials.Values.Count} материалов");
       tx.Commit();
       //      }
 
@@ -83,7 +89,7 @@ namespace MaterialTransfer
       {
         // TODO: add null check if material is correct
         var sheetMaterial = materialsFromDB.ElementAt(i);
-        if (sheetMaterial.Count() > 4)
+        if (sheetMaterial.Count() > 4 || !sheetMaterial.Any(x => (string) x == string.Empty))
         {
           string sheetMaterialName = sheetMaterial.ElementAt(1) as string;
           if (!sheetMaterials.ContainsKey(sheetMaterialName))
